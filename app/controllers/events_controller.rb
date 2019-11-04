@@ -2,9 +2,11 @@ class EventsController < ApplicationController
   def index 
     @events = Event.all
   end
+
   def new
     @event = Event.new 
   end
+
   def create
     @event = Event.new(clean_params) 
     if @event.save
@@ -13,11 +15,18 @@ class EventsController < ApplicationController
       render :new , notice: '任務新增失敗! '
     end
   end
+
   def show
     @event = Event.find(params[:id])
   end
+
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy if @event
+    redirect_to root_path, notice: '任務已刪除!'
   end
+
+
 
   private
     def clean_params

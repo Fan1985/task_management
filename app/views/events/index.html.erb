@@ -17,6 +17,7 @@
         <td><%= event.status%></td>
         <td><%= event.start_from%></td>
         <td><%= event.end_at%></td>
+        <td><%= link_to '刪除', event_path(event.id), method: :delete %></td>
       </tr>
     <% end%>
   </tbody>
