@@ -1,9 +1,26 @@
 <h1><%= @event.topic%></h1>
 
-<div>任務內容: <%= @event.content%></div>
-<div>優先程度: <%= @event.priority%></div>
-<div>狀態: <%= @event.status%></div>
-<div>開始時間: <%= @event.start_from%></div>
-<div>結束時間: <%= @event.end_at%></div>
+<table class='table'>
+  <tr>
+    <th>任務內容</th>
+    <td><%= @event.content%></td>
+  </tr>
+  <tr>
+    <th>優先程度</th>
+    <td><%= @event.priority%></td>
+  </tr>
+  <tr>
+    <th>狀態</th>
+    <td><%= @event.status%></td>
+  </tr>
+  <tr>
+    <th>開始時間</th>
+    <td><%= @event.start_from%></td>
+  </tr>
+  <tr>
+    <th>結束時間</th>
+    <td><%= @event.end_at%></td>
+  </tr>
+</table>
 
-<%= link_to '返回任務列表', events_path %> 
+<%= link_to '返回任務列表', events_path, class:'btn btn-primary' %> 
