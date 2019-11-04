@@ -11,13 +11,13 @@
   </thead>
   <tbody>
     <% @events.each do |event|%>
-    <tr>
-      <td><%= event.topic%></td>
-      <td><%= event.priority%></td>
-      <td><%= event.status%></td>
-      <td><%= event.start_from%></td>
-      <td><%= event.end_at%></td>
+      <tr>
+        <td><a href="<%= event_path(event.id)%>"><%= event.topic%></a></td>
+        <td><%= event.priority%></td>
+        <td><%= event.status%></td>
+        <td><%= event.start_from%></td>
+        <td><%= event.end_at%></td>
+      </tr>
     <% end%>
-    </tr>
   </tbody>
 </table>
