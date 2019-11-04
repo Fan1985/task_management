@@ -26,7 +26,19 @@ class EventsController < ApplicationController
     redirect_to root_path, notice: '任務已刪除!'
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
 
+  def update
+    @event = Event.find(params[:id])
+    if @event.save
+      redirect_to root_path, notice: '任務修改成功!'
+      byebug
+    else
+      redirect_to edit_event_path(@event.id), notice: '任務修改失敗!'
+    end
+  end
 
   private
     def clean_params
