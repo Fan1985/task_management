@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :get_event, except: [:index, :new, :create]
+
   def index 
     @events = Event.all
   end
@@ -17,21 +19,17 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy if @event
     redirect_to root_path, notice: '任務已刪除!'
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
     if @event.save
       redirect_to root_path, notice: '任務修改成功!'
       byebug
@@ -43,6 +41,10 @@ class EventsController < ApplicationController
   private
     def clean_params
       params.require(:event).permit(:topic, :content, :priority, :status, :start_from, :end_at)
+    end
+    
+    def get_event
+      @event = Event.find(params[:id])
     end
 
 end
