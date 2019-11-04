@@ -11,4 +11,4 @@ class Event < ApplicationRecord
 #       self.status == 2
 #     end
 #   end
-# end
+end

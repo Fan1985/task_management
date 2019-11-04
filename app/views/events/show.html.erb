@@ -1,0 +1,9 @@
+<h1><%= @event.topic%></h1>
+
+<div>任務內容: <%= @event.content%></div>
+<div>優先程度: <%= @event.priority%></div>
+<div>狀態: <%= @event.status%></div>
+<div>開始時間: <%= @event.start_from%></div>
+<div>結束時間: <%= @event.end_at%></div>
+
+<%= link_to '返回任務列表', events_path %> 
