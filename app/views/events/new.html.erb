@@ -1,34 +1,10 @@
 <h1>新增任務</h1>
-  <%= form_for(@event) do |f| %>
-    <div>
-      <%= f.label :topic, "名稱" %>
-      <%= f.text_field :topic %> 
-    </div>
-
-    <div>
-      <%= f.label :content, "內容" %>
-      <%= f.text_area :content %> 
-    </div>
-
-    <div>
-      <%= f.label :priority, "優先程度" %>
-      <%= f.text_field :priority %> 
-    </div>
-
-    <div>
-      <%= f.label :status, "狀態" %>
-      <%= f.text_field :status %> 
-    </div>
-
-    <div>
-      <%= f.label :start_from, "開始時間" %>
-      <%= f.text_field :start_from %> 
-    </div>
-
-    <div>
-      <%= f.label :end_at, "結束時間" %>
-      <%= f.text_field :end_at %> 
-    </div>
-
-    <%= f.submit '新增', class:'btn btn-primary' %>
+  <%= simple_form_for(@event) do |f| %>
+    <%= f.input :topic, label: "名稱" %>
+    <%= f.input :content, label: "內容" %>
+    <%= f.input :priority, label: "優先程度" %>
+    <%= f.input :status, label: "狀態" %>
+    <%= f.input :start_from, label: "開始時間" %>
+    <%= f.input :end_at, label: "結束時間" %>
+    <%= f.submit '新增', class:'btn btn-primary'%>
   <% end %>
