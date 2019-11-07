@@ -32,7 +32,6 @@ class EventsController < ApplicationController
   def update
     if @event.save
       redirect_to root_path, notice: '任務修改成功!'
-      byebug
     else
       redirect_to edit_event_path(@event.id), notice: '任務修改失敗!'
     end
