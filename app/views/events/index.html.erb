@@ -1,5 +1,7 @@
 <h1>任務列表</h1>
-
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
 <table class='table'>
   <thead>
     <tr>

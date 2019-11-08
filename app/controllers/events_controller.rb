@@ -10,11 +10,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(clean_params) 
+    @event = Event.new(event_params) 
     if @event.save
       redirect_to events_path, notice: '任務新建完成! '
     else
-      render :new , notice: '任務新增失敗! '
+      render :new 
     end
   end
 
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy if @event
+    @event.destroy
     redirect_to root_path, notice: '任務已刪除!'
   end
 
@@ -33,12 +33,12 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path, notice: '任務修改成功!'
     else
-      redirect_to edit_event_path(@event.id), notice: '任務修改失敗!'
+      render edit_event_path(@event.id), alert: '任務修改失敗!'
     end
   end
 
   private
-    def clean_params
+    def event_params
       params.require(:event).permit(:topic, :content, :priority, :status, :start_from, :end_at)
     end
     
