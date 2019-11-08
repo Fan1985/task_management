@@ -30,10 +30,10 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.save
+    if @event.update(event_params)
       redirect_to root_path, notice: '任務修改成功!'
     else
-      render edit_event_path(@event.id), alert: '任務修改失敗!'
+      render :edit
     end
   end
 
