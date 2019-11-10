@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to root_path, notice: '任務修改成功!'
+      redirect_to root_path, notice: '任務修改完成!'
     else
       render :edit
     end

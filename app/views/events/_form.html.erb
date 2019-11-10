@@ -1,17 +1,18 @@
-  <ul>
-    <% if @event.errors.any?%>
-      <% @event.errors.full_messages.each do |message|%>
-        <li><%= message %></li>
-      <% end %>
-    <% end %>
-  </ul>
 
-  <%= simple_form_for event, :html => { :class => 'col-lg-6' } do |f| %>
-    <%= f.input :topic, label: "名稱", error: false %>
-    <%= f.input :content, label: "內容", error: false %>
-    <%= f.input :priority, label: "優先程度", error: false %>
-    <%= f.input :status, label: "狀態", error: false %>
-    <%= f.input :start_from, label: "開始時間", error: false %>
-    <%= f.input :end_at, label: "結束時間", error: false %>
-    <%= f.submit submit_text, class:'btn btn-primary' %>
-  <% end%>
+<ul class="alert <%= errors_alert(event) %>" role="alert">
+  <% if event.errors.any? %>
+    <% event.errors.full_messages.each do |message|%>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= simple_form_for event, :html => { :class => 'col-lg-6' } do |f| %>
+  <%= f.input :topic, label: "名稱", error: false %>
+  <%= f.input :content, label: "內容", error: false %>
+  <%= f.input :priority, label: "優先程度", error: false %>
+  <%= f.input :status, label: "狀態", error: false %>
+  <%= f.input :start_from, label: "開始時間", error: false %>
+  <%= f.input :end_at, label: "結束時間", error: false %>
+  <%= f.submit submit_text, class:'btn btn-primary' %>
+<% end %>
