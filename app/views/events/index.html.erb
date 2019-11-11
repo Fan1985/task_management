@@ -1,9 +1,9 @@
 <h1>任務列表</h1>
-<div class="alert <%= flash_switch %>" role="alert">
+<div class="alert <%= flash_style %>" role="alert">
   <% flash.each do |key, value| %>
     <%= value %>
   <% end %>
-</div>  
+</div>
 <table class='table'>
   <thead>
     <tr>
@@ -17,7 +17,7 @@
   <tbody>
     <% @events.each do |event|%>
       <tr>
-        <td><a href="<%= event_path(event.id)%>"><%= event.topic%></a></td>
+        <td><%= link_to event.topic, event_path(event) %></a></td>
         <td><%= event.priority%></td>
         <td><%= event.status%></td>
         <td><%= event.start_from%></td>

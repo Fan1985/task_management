@@ -12,8 +12,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params) 
     if @event.save
-      redirect_to events_path, notice: '任務新建完成! '
+      redirect_to events_path, notice: '任務新增完成! '
     else
+      flash[:alert] = '新增失敗!'
       render :new 
     end
   end
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to root_path, notice: '任務已刪除!'
+    redirect_to root_path, warning: '任務已刪除!'
   end
 
   def edit
@@ -33,6 +34,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to root_path, notice: '任務修改完成!'
     else
+      flash[:alert] = '修改失敗!' 
       render :edit
     end
   end

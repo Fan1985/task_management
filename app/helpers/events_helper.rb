@@ -7,20 +7,14 @@ module EventsHelper
     end
   end
 
-  def errors_alert(event)
-    if event.errors.any?
-      "alert-danger"
+  def flash_style
+    if flash.notice.present?
+      'alert-success'
+    elsif flash.alert.present?
+      'alert-danger'
+    elsif flash[:warning].present? 
+      'alert-warning'
     end
   end
 
-  def flash_switch
-    if flash.notice.present?
-      if flash.notice.match(/完成/) 
-        'alert-success'
-      elsif flash.notice.match(/已刪除/)
-        'alert-warning'
-      end
-    end
-  end
-  
 end

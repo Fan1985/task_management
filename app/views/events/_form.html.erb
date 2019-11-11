@@ -1,18 +1,14 @@
-
-<ul class="alert <%= errors_alert(event) %>" role="alert">
-  <% if event.errors.any? %>
-    <% event.errors.full_messages.each do |message|%>
-      <li><%= message %></li>
-    <% end %>
+<div class="alert <%= flash_style %>" role="alert">
+  <% flash.each do |key, value| %>
+    <%= value %>
   <% end %>
-</ul>
-
+</div>
 <%= simple_form_for event, :html => { :class => 'col-lg-6' } do |f| %>
-  <%= f.input :topic, label: "名稱", error: false %>
-  <%= f.input :content, label: "內容", error: false %>
-  <%= f.input :priority, label: "優先程度", error: false %>
-  <%= f.input :status, label: "狀態", error: false %>
-  <%= f.input :start_from, label: "開始時間", error: false %>
-  <%= f.input :end_at, label: "結束時間", error: false %>
+  <%= f.input :topic, label: "名稱" %>
+  <%= f.input :content, label: "內容" %>
+  <%= f.input :priority, label: "優先程度" %>
+  <%= f.input :status, label: "狀態" %>
+  <%= f.input :start_from, label: "開始時間" %>
+  <%= f.input :end_at, label: "結束時間" %>
   <%= f.submit submit_text, class:'btn btn-primary' %>
 <% end %>
