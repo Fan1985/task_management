@@ -1,0 +1,32 @@
+<h1>任務列表</h1>
+<div class="alert <%= flash_style %>" role="alert">
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
+</div>
+<table class='table'>
+  <thead>
+    <tr>
+      <td>名稱</td>
+      <td>優先度</td>
+      <td>狀態</td>
+      <td>開始時間</td>
+      <td>結束時間</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event|%>
+      <tr>
+        <td><%= link_to event.topic, event_path(event) %></a></td>
+        <td><%= event.priority%></td>
+        <td><%= event.status%></td>
+        <td><%= event.start_from%></td>
+        <td><%= event.end_at%></td>
+        <td><%= link_to '修改', edit_event_path(event), class:'btn btn-primary' %>
+        <%= link_to '刪除', event_path(event), method: :delete, class:'btn btn-danger' %></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+
+<%= link_to '新增', new_event_path, class:'btn btn-primary'%>
